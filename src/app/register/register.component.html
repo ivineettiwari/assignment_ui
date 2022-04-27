@@ -1,0 +1,67 @@
+<div class="container" >
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ signUp ? 'Sign Up' : 'Sign In'}}</h5>
+            <form class="form-signin" [formGroup]="loginForm" *ngIf="signUp">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="firstname" >First Name*</label>
+                            <input type="name" class="form-control rounded" id="firstname" aria-describedby="emailHelp" placeholder="Enter First Name" formControlName="firstname">
+                        </div>
+                        <div class="col-6">
+                            <label for="lastname" >Last Name*</label>
+                            <input type="name" class="form-control rounded" id="lastname" aria-describedby="emailHelp" placeholder="Enter Last name" formControlName="lastname">
+                        </div>
+                    </div>
+                </div>
+                <br>
+              <div class="form-group">
+                <label for="inputEmail" >Email address *</label>
+                <input type="email" class="form-control rounded" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" formControlName="username">
+              </div>
+              <br>
+              <div class="form-group">
+                  <label for="inputPassword">Password *</label>
+                  <input type="password" class="form-control rounded" id="inputPassword" aria-describedby="passwordHelp" placeholder="Enter password" formControlName="password">
+              </div>
+
+              <p class="alert alert-danger" role="alert" *ngIf="error">
+                <strong>There was an error!</strong><br>Please check your username and try again.
+              </p>
+              <p class="alert alert-danger" role="alert" *ngIf="error2">
+                <strong>Already Registered!</strong>
+              </p>
+              <br>
+              <button id="submitButton" class="btn btn-lg btn-primary btn-block text-uppercase" type="button" [disabled]="!loginForm.valid || processing" (click)="onSubmitButtonClicked()">Sign Up</button>
+              <button class="button-class" style="float: right; margin-top: 15px;" (click)="pageLogin1()">Sign In</button>
+            </form>
+
+            <!-- Sign In ###################################################### -->
+
+            <form class="form-signin" [formGroup]="signInForm" *ngIf="signIn">
+              <div class="form-group">
+                <label for="inputEmail1" >Email address *</label>
+                <input type="email" class="form-control rounded" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="username">
+              </div>
+              <br>
+              <div class="form-group">
+                  <label for="inputPassword">Password *</label>
+                  <input type="password" class="form-control rounded" id="inputPassword" aria-describedby="passwordHelp" placeholder="Enter password" formControlName="password">
+              </div>
+
+              <p class="alert alert-danger" role="alert" *ngIf="error3">
+                <strong>There was an error!</strong><br>Please check your username/password and try again.
+              </p>
+              <br>
+              <button id="submitButton" class="btn btn-lg btn-primary btn-block text-uppercase" type="button" [disabled]="!signInForm.valid || processing" (click)="onSubmitButtonClickedLogin()">Sign In</button>
+              <button class="button-class" style="float: right; margin-top: 15px;" (click)="pageLogin2()">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
